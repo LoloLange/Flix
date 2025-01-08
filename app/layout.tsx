@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { inter } from "./fonts";
 import "./globals.css";
 import Header from "./components/shared/Header";
+import { ViewTransitions } from "next-view-transitions";
 
 export const metadata: Metadata = {
   title: "Flix",
@@ -14,13 +15,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} antialiased`}
-      >
-        <Header />
-        {children}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className={`${inter.variable} antialiased`}>
+          <Header />
+          {children}
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

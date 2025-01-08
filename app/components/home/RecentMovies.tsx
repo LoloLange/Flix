@@ -1,6 +1,7 @@
 import { RecentMovies as RecentMoviesType } from "@/app/types/types";
 import { SwiperContainer } from "./SwiperContainer";
 import { IconStarFilled } from "@tabler/icons-react";
+import { Link } from "next-view-transitions";
 
 export const UpcomingMovies = ({
   recent,
@@ -29,9 +30,11 @@ export const UpcomingMovies = ({
           <div>
             <p className="text-5xl mt-3 opacity-90">{current.title}</p>
             <p className="w-[600px] mt-3 opacity-70">{current.overview}</p>
-            <p className="border-2 border-gray-700 w-fit py-1.5 px-3 mt-4 rounded-lg cursor-pointer shadow-lg">
-              See more
-            </p>
+            <Link href={`/movie/${current.id}`}>
+              <p className="border-2 border-gray-700 w-fit py-1.5 px-3 mt-4 rounded-lg cursor-pointer shadow-lg">
+                See more
+              </p>
+            </Link>
           </div>
           <div className="flex gap-x-3 h-fit items-center">
             <IconStarFilled className="w-8 h-8" />

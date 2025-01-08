@@ -6,6 +6,7 @@ import "swiper/css";
 import { Autoplay, Navigation } from "swiper/modules";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { Dispatch, SetStateAction } from "react";
+import { Link } from "next-view-transitions";
 
 export const SwiperContainer = ({
   results,
@@ -48,13 +49,15 @@ export const SwiperContainer = ({
         >
           {results.map((m) => (
             <SwiperSlide key={m.id} className="relative cursor-pointer">
-              <img
-                className="rounded-lg shadow-lg"
-                src={getPoster(
-                  setCurrentIndex ? m.poster_path : m.backdrop_path
-                )}
-                alt={m.title + " poster"}
-              />
+              <Link href={`/movie/${m.id}`}>
+                <img
+                  className="rounded-lg shadow-lg"
+                  src={getPoster(
+                    setCurrentIndex ? m.poster_path : m.backdrop_path
+                  )}
+                  alt={m.title + " poster"}
+                />
+              </Link>
               {!setCurrentIndex && (
                 <div className="absolute bottom-5 px-5">
                   <p className="text-lg">{m.title}</p>

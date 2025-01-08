@@ -1,6 +1,7 @@
 import { genres } from "@/app/lib/constants";
 import { TrendingMovies } from "@/app/types/types";
 import { IconPlayerPlayFilled, IconPlus } from "@tabler/icons-react";
+import { Link } from "next-view-transitions";
 
 export const Hero = ({
   selected,
@@ -29,7 +30,18 @@ export const Hero = ({
           <div className="flex flex-col gap-x-2 mt-2">
             <div className="flex text-gray-300 mb-1">
               {selected.genre_ids.slice(0, 3).map((g, i) => (
-                <p className={`${i === 0 && selected.genre_ids.length !== 1 ? 'border-r-2 border-gray-800 pr-3' : i !== selected.genre_ids.slice(0, 3).length - 1 ? 'border-r-2 border-gray-800 px-3' : selected.genre_ids.slice(0, 3).length !== 1 ? 'pl-3' : ''}`} key={g}>
+                <p
+                  className={`${
+                    i === 0 && selected.genre_ids.length !== 1
+                      ? "border-r-2 border-gray-800 pr-3"
+                      : i !== selected.genre_ids.slice(0, 3).length - 1
+                      ? "border-r-2 border-gray-800 px-3"
+                      : selected.genre_ids.slice(0, 3).length !== 1
+                      ? "pl-3"
+                      : ""
+                  }`}
+                  key={g}
+                >
                   {genres.movie.find((genre) => genre.id === g)?.name}
                 </p>
               ))}
@@ -37,9 +49,12 @@ export const Hero = ({
             <p className="text-sm">{selected.release_date}</p>
           </div>
           <div className="flex gap-x-3">
-            <div className="border-2 border-gray-700 w-fit py-1.5 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300">
+            <Link
+              href={`/movie/${selected.id}`}
+              className="border-2 border-gray-700 w-fit py-1.5 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300"
+            >
               <IconPlayerPlayFilled className="w-8 h-8 p-0.5" />
-            </div>
+            </Link>
             <div className="border-2 border-gray-700 w-fit py-1.5 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300 flex items-center gap-x-1">
               <IconPlus className="w-8 h-8 p-0.5" />
               <p className="text-lg">Watchlist</p>
