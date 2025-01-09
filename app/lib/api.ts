@@ -24,3 +24,39 @@ export const movieRecommendations = (id: string) => {
   const path = `/movie/${id}/recommendations`;
   return fetchData(path);
 };
+
+export const collections = async () => {
+  const ids = ["10", "1241"];
+  const results = await Promise.all(
+    ids.map((id) => {
+      const path = `/collection/${id}`;
+      return fetchData(path);
+    })
+  );
+  return results;
+};
+
+export const trendingShows = () => {
+  const path = "/trending/tv/week";
+  return fetchData(path);
+};
+
+export const showRecommendationsHome = async (id: string) => {
+  const path = `/tv/${id}/recommendations`;
+  return fetchData(path);
+};
+
+export const showDetails = (id: string) => {
+  const path = `/tv/${id}`;
+  return fetchData(path);
+};
+
+export const showCredits = (id: string) => {
+  const path = `/tv/${id}/credits`;
+  return fetchData(path);
+};
+
+export const showRecommendations = (id: string) => {
+  const path = `/tv/${id}/recommendations`;
+  return fetchData(path);
+};

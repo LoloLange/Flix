@@ -1,6 +1,12 @@
 import { MovieDetails } from "@/app/types/types";
 
-export const Info = ({ movie }: { movie: MovieDetails }) => {
+export const Info = ({
+  movie,
+  getMonth,
+}: {
+  movie: MovieDetails;
+  getMonth: (date: string) => string;
+}) => {
   const formatCurrency = (value: number) =>
     `$${new Intl.NumberFormat("de-DE").format(value)}`;
 
@@ -27,8 +33,41 @@ export const Info = ({ movie }: { movie: MovieDetails }) => {
         title="Production countries"
         items={movie.production_countries.map((c) => c.name)}
       />
-      <Section title="Revenue" items={[movie.revenue !== 0 ? formatCurrency(movie.revenue) : "Not available"]} />
-      <Section title="Budget" items={[movie.budget !== 0 ? formatCurrency(movie.budget) : "Not available"]} />
+      {movie.revenue || movie.budget ? (
+        <>
+          <Section
+            title="Revenue"
+            items={[
+              movie.revenue !== 0
+                ? formatCurrency(movie.revenue)
+                : "Not available",
+            ]}
+          />
+          <Section
+            title="Budget"
+            items={[
+              movie.budget !== 0
+                ? formatCurrency(movie.budget)
+                : "Not available",
+            ]}
+          />
+        </>
+      ) : (
+        <>
+          <Section
+            title="Last Air Date"
+            items={[
+              getMonth(movie.last_air_date ?? "Not available") ?? "Not available",
+            ]}
+          />
+          <Section
+            title="In Production"
+            items={[
+              movie.in_production ? "Yes" : "No"
+            ]}
+          />
+        </>
+      )}
     </section>
   );
 };

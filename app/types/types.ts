@@ -14,6 +14,8 @@ export interface TrendingMovies {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  name?: string;
+  first_air_date?: string;
 }
 
 export interface RecentMovies {
@@ -31,6 +33,8 @@ export interface RecentMovies {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  name?: string;
+  first_air_date?: string;
 }
 
 export interface MovieDetails {
@@ -60,6 +64,12 @@ export interface MovieDetails {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  name?: string;
+  first_air_date?: string;
+  number_of_seasons?: number;
+  number_of_episodes?: number;
+  last_air_date?: string;
+  in_production?: boolean;
 }
 
 export interface BelongsToCollection {
@@ -127,4 +137,33 @@ export enum Department {
   Sound = "Sound",
   VisualEffects = "Visual Effects",
   Writing = "Writing",
+}
+
+export interface Collection {
+  id: number;
+  name: string;
+  overview: string;
+  poster_path: string;
+  backdrop_path: string;
+  parts: Part[];
+}
+
+export interface Part {
+  backdrop_path: string;
+  id: number;
+  title: string;
+  original_title: string;
+  overview: string;
+  poster_path: string;
+  media_type: string;
+  adult: boolean;
+  original_language: string;
+  genre_ids: number[];
+  popularity: number;
+  release_date: Date;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+  name?: string;
+  first_air_date?: string;
 }

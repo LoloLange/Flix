@@ -3,12 +3,14 @@ import { SwiperContainer } from "./SwiperContainer";
 import { IconStarFilled } from "@tabler/icons-react";
 import { Link } from "next-view-transitions";
 
-export const UpcomingMovies = ({
+export const RecentMovies = ({
   recent,
   poster,
+  tvShows
 }: {
   recent: RecentMoviesType[];
   poster: string;
+  tvShows?: boolean;
 }) => {
   const current = recent[0];
   return (
@@ -28,9 +30,11 @@ export const UpcomingMovies = ({
       >
         <div className="flex justify-between p-16">
           <div>
-            <p className="text-5xl mt-3 opacity-90">{current.title}</p>
+            <p className="text-5xl mt-3 opacity-90">
+              {current.title ? current.title : current.name}
+            </p>
             <p className="w-[600px] mt-3 opacity-70">{current.overview}</p>
-            <Link href={`/movie/${current.id}`}>
+            <Link href={!tvShows ? `/movie/${current.id}` : `/tv/${current.id}`}>
               <p className="border-2 border-gray-700 w-fit py-1.5 px-3 mt-4 rounded-lg cursor-pointer shadow-lg">
                 See more
               </p>
@@ -45,7 +49,7 @@ export const UpcomingMovies = ({
           </div>
         </div>
         <div className="absolute bottom-14 w-[calc(100%-50px)]">
-          <SwiperContainer results={recent} />
+          <SwiperContainer results={recent} tvShows={tvShows ? true : false} />
         </div>
       </div>
     </section>

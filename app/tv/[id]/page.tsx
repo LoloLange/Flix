@@ -2,30 +2,25 @@ import { Credits } from "@/app/components/media/Credits";
 import { Info } from "@/app/components/media/Info";
 import { Movie } from "@/app/components/media/Movie";
 import { Recommendations } from "@/app/components/media/Recommendations";
-import {
-  movieCredits,
-  movieDetails,
-  movieRecommendations,
-} from "@/app/lib/api";
+import { showCredits, showDetails, showRecommendations } from "@/app/lib/api";
 import { months } from "@/app/lib/constants";
-import { MovieCredits, MovieDetails } from "@/app/types/types";
 import { notFound } from "next/navigation";
 
-interface MoviePageProps {
+interface TvPageProps {
   params: { id: string };
 }
 
-export default async function MoviePage({ params }: MoviePageProps) {
+export default async function TvPage({ params }: TvPageProps) {
   const { id } = params;
 
   if (!id) {
     return notFound();
   }
 
-  const movie: MovieDetails = await movieDetails(id);
-  const credits: MovieCredits = await movieCredits(id);
-  const { results: recommendations }: { results: MovieDetails[] } =
-    await movieRecommendations(id);
+  const movie = await showDetails(id);
+  const credits = await showCredits(id);
+  const { results: recommendations } = await showRecommendations(id);
+  console.log(movie);
 
   if (!movie) {
     return notFound();
@@ -45,7 +40,7 @@ export default async function MoviePage({ params }: MoviePageProps) {
         {credits.cast.length > 0 && <Credits credits={credits} cast={true} />}
         {credits.crew.length > 0 && <Credits credits={credits} cast={false} />}
         <Info movie={movie} getMonth={getMonth} />
-        <Recommendations recommendations={recommendations} />
+        <Recommendations recommendations={recommendations} tvShows={true} />
       </section>
     </main>
   );

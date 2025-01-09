@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { navbar } from "../../lib/constants";
 import { IconBrandFlipboard, IconSearch } from "@tabler/icons-react";
 import { useScroll } from "../../hooks/useScroll";

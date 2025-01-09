@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { TrendingMovies, RecentMovies } from "@/app/types/types";
+import { TrendingMovies, RecentMovies, Collection } from "@/app/types/types";
 import { getPoster } from "@/app/utils/getPoster";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -11,22 +11,34 @@ import { Link } from "next-view-transitions";
 export const SwiperContainer = ({
   results,
   setCurrentIndex,
+  collectionName,
+  tvShows,
+  recommendations,
 }: {
-  results: TrendingMovies[] | RecentMovies[];
+  results: TrendingMovies[] | RecentMovies[] | Collection["parts"];
   setCurrentIndex?: Dispatch<SetStateAction<number>>;
+  collectionName?: string;
+  tvShows?: boolean;
+  recommendations?: boolean;
 }) => {
   return (
     <section className={`${setCurrentIndex && "-mt-20 z-30"}`}>
       {setCurrentIndex ? (
         <p className="text-xl text-white px-20">Trending movies</p>
-      ) : (
+      ) : tvShows ? (
+        <p className={`text-lg text-gray-300 px-10`}>Trending Tv Shows</p>
+      ) : recommendations ? (
+        <p className={`text-lg text-gray-300 px-10`}>Recommendations</p>
+      ) : !collectionName ? (
         <p
-          className={`text-xl text-white ${
+          className={`text-lg text-gray-300 ${
             setCurrentIndex ? "px-20" : "px-10 mt-3"
           }`}
         >
           Recent movies
         </p>
+      ) : (
+        <p className={`text-lg text-gray-300 px-10`}>{collectionName}</p>
       )}
       <div
         className={`overflow-hidden mt-2 mb-5 relative group ${
@@ -45,11 +57,15 @@ export const SwiperContainer = ({
             prevEl: ".swiper-prev",
           }}
           modules={[Navigation, Autoplay]}
-          autoplay={{ delay: 10000 }}
+          autoplay={setCurrentIndex ? { delay: 10000 } : false}
         >
           {results.map((m) => (
             <SwiperSlide key={m.id} className="relative cursor-pointer">
-              <Link href={`/movie/${m.id}`}>
+              <Link
+                href={
+                  tvShows || recommendations ? `/tv/${m.id}` : `/movie/${m.id}`
+                }
+              >
                 <img
                   className="rounded-lg shadow-lg"
                   src={getPoster(
@@ -60,8 +76,12 @@ export const SwiperContainer = ({
               </Link>
               {!setCurrentIndex && (
                 <div className="absolute bottom-5 px-5">
-                  <p className="text-lg">{m.title}</p>
-                  <p className="text-sm opacity-75">{m.release_date}</p>
+                  <p className="text-lg">{m.title ? m.title : m.name}</p>
+                  <p className="text-sm opacity-75">
+                    {typeof m.release_date === "string"
+                      ? m.release_date
+                      : m.first_air_date}
+                  </p>
                 </div>
               )}
             </SwiperSlide>

@@ -4,8 +4,10 @@ import { Link } from "next-view-transitions";
 
 export const Recommendations = ({
   recommendations,
+  tvShows
 }: {
   recommendations: MovieDetails[];
+  tvShows?: boolean;
 }) => {
   return (
     <section>
@@ -13,7 +15,7 @@ export const Recommendations = ({
       <div className="grid grid-cols-4 gap-y-5 gap-x-7 flex-wrap my-5">
         {recommendations.slice(0, 8).map((r) => (
           <div key={r.id} className="relative cursor-pointer">
-            <Link href={`/movie/${r.id}`}>
+            <Link href={tvShows ? `/tv/${r.id}` : `/movie/${r.id}`}>
               <div
                 className="h-[220px] bg-neutral-700 rounded-2xl relative"
                 style={{
@@ -25,8 +27,8 @@ export const Recommendations = ({
               ></div>
             </Link>
             <div className="absolute bottom-5 px-5">
-              <p className="text-lg">{r.title}</p>
-              <p className="text-sm opacity-75">{r.release_date}</p>
+              <p className="text-lg">{r.title ? r.title : r.name}</p>
+              <p className="text-sm opacity-75">{r.release_date ? r.release_date : r.first_air_date}</p>
             </div>
           </div>
         ))}
