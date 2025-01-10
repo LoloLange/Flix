@@ -13,7 +13,7 @@ export const Hero = ({
   return (
     <main>
       <div
-        className="w-full relative z-10"
+        className="w-full relative -z-10"
         style={{
           width: "100%",
           height: "80vh",

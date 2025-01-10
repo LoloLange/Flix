@@ -40,7 +40,9 @@ export default async function MoviePage({ params }: MoviePageProps) {
         {credits.cast.length > 0 && <Credits credits={credits} cast={true} />}
         {credits.crew.length > 0 && <Credits credits={credits} cast={false} />}
         <Info movie={movie} />
-        <Recommendations recommendations={recommendations} />
+        {recommendations.length > 0 && (
+          <Recommendations recommendations={recommendations} />
+        )}
       </section>
     </main>
   );

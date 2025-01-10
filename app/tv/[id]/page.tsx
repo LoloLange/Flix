@@ -2,7 +2,12 @@ import { Credits } from "@/app/components/media/Credits";
 import { Info } from "@/app/components/media/Info";
 import { Movie } from "@/app/components/media/Movie";
 import { Recommendations } from "@/app/components/media/Recommendations";
-import { getVideos, showCredits, showDetails, showRecommendations } from "@/app/lib/api";
+import {
+  getVideos,
+  showCredits,
+  showDetails,
+  showRecommendations,
+} from "@/app/lib/api";
 import { Video } from "@/app/types/types";
 import { notFound } from "next/navigation";
 
@@ -20,8 +25,8 @@ export default async function TvPage({ params }: TvPageProps) {
   const movie = await showDetails(id);
   const credits = await showCredits(id);
   const { results: recommendations } = await showRecommendations(id);
-    const { results: videos } = await getVideos(id, "tv");
-    const trailer = videos.find((v: Video) => v.type === "Trailer");
+  const { results: videos } = await getVideos(id, "tv");
+  const trailer = videos.find((v: Video) => v.type === "Trailer");
 
   if (!movie) {
     return notFound();
@@ -34,7 +39,9 @@ export default async function TvPage({ params }: TvPageProps) {
         {credits.cast.length > 0 && <Credits credits={credits} cast={true} />}
         {credits.crew.length > 0 && <Credits credits={credits} cast={false} />}
         <Info movie={movie} />
-        <Recommendations recommendations={recommendations} tvShows={true} />
+        {recommendations.length > 0 && (
+          <Recommendations recommendations={recommendations} tvShows={true} />
+        )}
       </section>
     </main>
   );

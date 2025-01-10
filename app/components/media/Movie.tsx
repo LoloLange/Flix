@@ -46,7 +46,7 @@ export const Movie = ({
           maskImage: "linear-gradient(black 85%, transparent)",
         }}
       ></div>
-      <div className="absolute bottom-0 px-20 flex justify-between items-center w-full select-none z-30 gap-x-10">
+      <div className="absolute bottom-5 px-20 flex justify-between items-center w-full select-none z-30 gap-x-10">
         <div>
           <p className="text-5xl font-medium font-bold">
             {movie.title ? movie.title : movie.name}

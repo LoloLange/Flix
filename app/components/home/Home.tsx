@@ -12,13 +12,14 @@ import { RecentMovies } from "./RecentMovies";
 import { Collections } from "./Collections";
 import { TrendingShows } from "./TrendingShows";
 import { Recommendations } from "./Recommendations";
+import { HomeSwiperSkeleton } from "./HomeSwiperSkeleton";
 
 export const Home = ({
   results,
   recent,
   collections,
   tvShows,
-  recommendations
+  recommendations,
 }: {
   results: TrendingMovies[];
   recent: RecentMoviesType[];
@@ -27,16 +28,25 @@ export const Home = ({
   recommendations: TrendingMovies[];
 }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [ready, setReady] = useState(false);
   const backImage = getPoster(results[currentIndex].backdrop_path);
   const upcomingBackImage = getPoster(recent[0].backdrop_path);
   return (
     <>
       <Hero selected={results[currentIndex]} poster={backImage} />
-      <SwiperContainer results={results} setCurrentIndex={setCurrentIndex} />
+      <SwiperContainer
+        results={results}
+        setCurrentIndex={setCurrentIndex}
+        setReady={setReady}
+        ready={ready}
+      />
+      {!ready && <HomeSwiperSkeleton />}
       <RecentMovies recent={recent} poster={upcomingBackImage} />
       <Collections collections={collections} />
       <TrendingShows tvShows={tvShows} />
-      <Recommendations recommendations={recommendations} />
+      {recommendations.length > 0 && (
+        <Recommendations recommendations={recommendations} />
+      )}
     </>
   );
 };
