@@ -60,3 +60,8 @@ export const showRecommendations = (id: string) => {
   const path = `/tv/${id}/recommendations`;
   return fetchData(path);
 };
+
+export const getVideos = (id: string, type: "movie" | "tv") => {
+  const path = `/${type}/${id}/videos`;
+  return fetchData(path);
+};

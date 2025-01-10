@@ -1,12 +1,7 @@
+import { months } from "@/app/lib/constants";
 import { MovieDetails } from "@/app/types/types";
 
-export const Info = ({
-  movie,
-  getMonth,
-}: {
-  movie: MovieDetails;
-  getMonth: (date: string) => string;
-}) => {
+export const Info = ({ movie }: { movie: MovieDetails }) => {
   const formatCurrency = (value: number) =>
     `$${new Intl.NumberFormat("de-DE").format(value)}`;
 
@@ -22,6 +17,13 @@ export const Info = ({
       </div>
     </div>
   );
+
+  const getMonth = (date: string) => {
+    const month = date.split("-")[1];
+    const monthName = months.find((m) => m.id === parseInt(month));
+    const year = date.split("-")[0];
+    return monthName?.name + " " + year;
+  };
 
   return (
     <section className="flex justify-between flex-wrap gap-5 my-10">
@@ -57,14 +59,13 @@ export const Info = ({
           <Section
             title="Last Air Date"
             items={[
-              getMonth(movie.last_air_date ?? "Not available") ?? "Not available",
+              getMonth(movie.last_air_date ?? "Not available") ??
+                "Not available",
             ]}
           />
           <Section
             title="In Production"
-            items={[
-              movie.in_production ? "Yes" : "No"
-            ]}
+            items={[movie.in_production ? "Yes" : "No"]}
           />
         </>
       )}

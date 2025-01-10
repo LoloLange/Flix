@@ -1,5 +1,6 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
-import { MovieDetails } from "@/app/types/types";
+import { MovieDetails, Video } from "@/app/types/types";
 import { getPoster } from "@/app/utils/getPoster";
 import {
   IconCalendarWeekFilled,
@@ -7,18 +8,31 @@ import {
   IconPlayerPlayFilled,
   IconStarFilled,
 } from "@tabler/icons-react";
+import { Trailer } from "./Trailer";
+import { useState } from "react";
+import { months } from "@/app/lib/constants";
 
 export const Movie = ({
   movie,
-  getMonth,
+  video,
 }: {
   movie: MovieDetails;
-  getMonth: (date: string) => string;
+  video: Video;
 }) => {
   const backImage = getPoster(movie.backdrop_path);
   const poster = getPoster(movie.poster_path);
+
+  const getMonth = (date: string) => {
+    const month = date.split("-")[1];
+    const monthName = months.find((m) => m.id === parseInt(month));
+    const year = date.split("-")[0];
+    return monthName?.name + " " + year;
+  };
+
+  const [trailer, setTrailer] = useState<boolean>(false);
   return (
     <main>
+      {trailer && <Trailer video={video} setTrailer={setTrailer} />}
       <div
         className="w-full relative z-10 saturate-[1.3]"
         style={{
@@ -79,7 +93,7 @@ export const Movie = ({
                 </p>
               </div>
             </div>
-            <div className="flex gap-x-2 border-2 border-gray-700 w-fit py-1.5 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300">
+            <div onClick={() => setTrailer(!trailer)} className="flex gap-x-2 border-2 border-gray-700 w-fit py-1.5 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300">
               <IconPlayerPlayFilled className="w-6 h-6 p-0.5" />
               <p>See trailer</p>
             </div>
