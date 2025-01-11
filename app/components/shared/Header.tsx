@@ -16,7 +16,7 @@ export default function Header() {
           <Link
             key={link.name}
             href={link.path}
-            className="hover:text-blue-500 duration-300"
+            className="hover:text-blue-500 duration-300 font-bold"
           >
             {link.name}
           </Link>
