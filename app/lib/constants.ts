@@ -5,11 +5,11 @@ export const navbar = [
   },
   {
     name: "Movies",
-    path: "/search/movie",
+    path: "/explore/movies",
   },
   {
     name: "Shows",
-    path: "/search/tv",
+    path: "/explore/shows",
   },
   {
     name: "Watchlist",

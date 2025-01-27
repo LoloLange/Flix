@@ -65,3 +65,9 @@ export const getVideos = (id: string, type: "movie" | "tv") => {
   const path = `/${type}/${id}/videos`;
   return fetchData(path);
 };
+
+export const exploreSearch = (type: string, page: string) => {
+  const path = `/trending/${type}/week`;
+  const query = `&page=${page}`;
+  return fetchData(path, query);
+};
