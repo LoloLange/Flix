@@ -5,7 +5,7 @@ import { Link } from "next-view-transitions";
 /* eslint-disable @next/next/no-img-element */
 export const Footer = () => {
   return (
-    <footer className="h-[150px] w-full mt-24 flex justify-center">
+    <footer className="h-[150px] w-full mt-5 flex justify-center">
       <div className="flex justify-between items-center h-full w-[800px]">
         <div className="flex items-center h-full">
           <img className="w-8" src="/logo.webp" alt="logo" />

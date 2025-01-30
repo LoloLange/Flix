@@ -6,7 +6,7 @@ interface ExplorePageProps {
 }
 
 export default async function ExplorePage({ params }: { params: ExplorePageProps }) {
-  const searchType = params.searchType;
+  const { searchType } = await params;
   const { results } = await exploreSearch(searchType === "movies" ? "movie" : "tv", "1");
 
   return <ExploreContainer searchType={searchType} initialResults={results} />;
