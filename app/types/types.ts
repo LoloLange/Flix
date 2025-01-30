@@ -180,3 +180,13 @@ export interface Video {
   published_at: Date;
   id: string;
 }
+
+export interface Watchlist {
+  type: "movies" | "shows" | string;
+  id: string;
+  title?: string;
+  backdrop_path: string;
+  release_date?: string;
+  name?: string;
+  first_air_date?: string;
+}

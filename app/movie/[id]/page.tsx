@@ -33,9 +33,17 @@ export default async function MoviePage({ params }: MoviePageProps) {
     return notFound();
   }
 
+  const watchlist = {
+    type: "movies",
+    id: movie.id.toString(),
+    title: movie.title,
+    backdrop_path: movie.backdrop_path,
+    release_date: movie.release_date,
+  };
+
   return (
     <main className="flex flex-col gap-y-[200px]">
-      <Movie movie={movie} video={trailer} />
+      <Movie movie={movie} video={trailer} watchlist={watchlist} />
       <section className="flex flex-col gap-y-10 px-36">
         {credits.cast.length > 0 && <Credits credits={credits} cast={true} />}
         {credits.crew.length > 0 && <Credits credits={credits} cast={false} />}

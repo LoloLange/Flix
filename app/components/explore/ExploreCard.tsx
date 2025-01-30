@@ -1,13 +1,16 @@
-import { MovieDetails } from "@/app/types/types";
+import { MovieDetails, Watchlist } from "@/app/types/types";
 import { getPoster } from "@/app/utils/getPoster";
 import { Link } from "next-view-transitions";
+import RemoveFromWatchlistButton from "../RemoveFromWatchlist";
 
 export const ExploreCard = ({
   type,
   media,
+  watchlist,
 }: {
-  type: "movies" | "shows";
-  media: MovieDetails;
+  type: "movies" | "shows" | string;
+  media: MovieDetails | Watchlist;
+  watchlist?: true;
 }) => {
   return (
     <div key={media.id} className="relative cursor-pointer">
@@ -22,6 +25,7 @@ export const ExploreCard = ({
           }}
         ></div>
       </Link>
+      {watchlist && <RemoveFromWatchlistButton movieId={media.id.toString()} />}
       <div className="absolute bottom-5 px-5">
         <p className="text-lg">{media.title ? media.title : media.name}</p>
         <p className="text-sm opacity-75">

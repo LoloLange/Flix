@@ -1,6 +1,6 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
-import { MovieDetails, Video } from "@/app/types/types";
+import { MovieDetails, Video, Watchlist } from "@/app/types/types";
 import { getPoster } from "@/app/utils/getPoster";
 import {
   IconCalendarWeekFilled,
@@ -11,13 +11,16 @@ import {
 import { Trailer } from "./Trailer";
 import { useState } from "react";
 import { months } from "@/app/lib/constants";
+import WatchlistButton from "../WatchlistButton";
 
 export const Movie = ({
   movie,
   video,
+  watchlist,
 }: {
   movie: MovieDetails;
   video: Video;
+  watchlist: Watchlist;
 }) => {
   const backImage = getPoster(movie.backdrop_path);
   const poster = getPoster(movie.poster_path);
@@ -93,9 +96,15 @@ export const Movie = ({
                 </p>
               </div>
             </div>
-            <div onClick={() => setTrailer(!trailer)} className="flex gap-x-2 border-2 border-gray-700 w-fit py-1.5 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300">
-              <IconPlayerPlayFilled className="w-6 h-6 p-0.5" />
-              <p>See trailer</p>
+            <div className="flex gap-x-2 items-center">
+              <div
+                onClick={() => setTrailer(!trailer)}
+                className="flex gap-x-2 border-2 border-gray-700 w-fit py-1.5 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300"
+              >
+                <IconPlayerPlayFilled className="w-6 h-6 p-0.5" />
+                <p>See trailer</p>
+              </div>
+              <WatchlistButton media={watchlist} />
             </div>
           </div>
         </div>
