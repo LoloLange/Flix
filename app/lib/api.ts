@@ -71,3 +71,9 @@ export const exploreSearch = (type: string, page: string) => {
   const query = `&page=${page}`;
   return fetchData(path, query);
 };
+
+export const search = (query: string) => {
+  const path = "/search/multi";
+  const queryParam = `&query=${query}`;
+  return fetchData(path, queryParam);
+};
