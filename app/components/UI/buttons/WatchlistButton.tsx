@@ -1,10 +1,10 @@
-import { Watchlist } from "../types/types";
+import { Watchlist } from "../../../types/types";
 import { useState, useEffect } from "react";
 import { IconPlus, IconX } from "@tabler/icons-react";
 import {
   handleAddToWatchlist,
   handleRemoveFromWatchlist,
-} from "../utils/watchlist";
+} from "../../../utils/watchlist";
 
 export default function WatchlistButton({ media }: { media: Watchlist }) {
   const [added, setAdded] = useState<boolean>(false);

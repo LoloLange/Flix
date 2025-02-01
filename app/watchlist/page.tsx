@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { ExploreCard } from "../components/explore/ExploreCard";
+import { MediaCard } from "../components/UI/cards/MediaCard";
 import { Watchlist } from "../types/types";
+import { TitleAndDescription } from "../components/UI/text/TitleAndDescription";
 
 export default function WatchlistPage() {
   const [watchlist, setWatchlist] = useState<Watchlist[]>([]);
@@ -15,16 +16,11 @@ export default function WatchlistPage() {
 
   return (
     <section className="min-h-[calc(100vh-170px-112px)] mt-28 px-20">
-      <div className="flex flex-col gap-y-2 items-center mb-10">
-        <p className="text-3xl font-bold">Watchlist</p>
-        <p className="text-gray-500">
-          See movies or tv shows that you have saved to watch later
-        </p>
-      </div>
+      <TitleAndDescription title="Watchlist" description="See movies or tv shows that you have saved to watch later" />
       {watchlist.length > 0 ? (
         <div className="grid grid-cols-4 gap-5">
           {watchlist.map((r) => (
-            <ExploreCard key={r.id} type={r.type} media={r} watchlist={true} />
+            <MediaCard key={r.id} type={r.type} media={r} watchlist={true} />
           ))}
         </div>
       ) : (

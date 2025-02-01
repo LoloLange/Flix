@@ -3,7 +3,7 @@ import { search } from "@/app/lib/api";
 import { MovieDetails } from "@/app/types/types";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ExploreCard } from "../explore/ExploreCard";
+import { MediaCard } from "../UI/cards/MediaCard";
 
 export const SearchContainer = () => {
   const [results, setResults] = useState<MovieDetails[]>([]);
@@ -24,7 +24,7 @@ export const SearchContainer = () => {
       <div className="grid grid-cols-4 gap-5">
         {results.map(
           (r) =>
-            r.backdrop_path && <ExploreCard key={r.id} type={""} media={r} />
+            r.backdrop_path && <MediaCard key={r.id} type={""} media={r} />
         )}
       </div>
     </section>

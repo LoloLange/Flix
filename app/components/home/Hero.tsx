@@ -2,6 +2,7 @@ import { genres } from "@/app/lib/constants";
 import { TrendingMovies } from "@/app/types/types";
 import { IconPlayerPlayFilled, IconPlus } from "@tabler/icons-react";
 import { Link } from "next-view-transitions";
+import { PosterWrapper } from "../UI/wrappers/PosterWrapper";
 
 export const Hero = ({
   selected,
@@ -12,19 +13,7 @@ export const Hero = ({
 }) => {
   return (
     <main>
-      <div
-        className="w-full relative -z-10"
-        style={{
-          width: "100%",
-          height: "80vh",
-          backgroundImage: `url(${poster})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          boxSizing: "border-box",
-          boxShadow: "inset 200px 50px 500px 200px rgba(0, 0, 0, 0.6)",
-          maskImage: "linear-gradient(black 85%, transparent)",
-        }}
-      >
+      <PosterWrapper poster={poster}>
         <div className="absolute bottom-[200px] pl-20 flex flex-col justify-center select-none">
           <p className="text-5xl font-medium">{selected.title}</p>
           <div className="flex flex-col gap-x-2 mt-2">
@@ -61,7 +50,7 @@ export const Hero = ({
             </div>
           </div>
         </div>
-      </div>
+      </PosterWrapper>
     </main>
   );
 };

@@ -1,9 +1,9 @@
 import { MovieDetails, Watchlist } from "@/app/types/types";
 import { getPoster } from "@/app/utils/getPoster";
 import { Link } from "next-view-transitions";
-import RemoveFromWatchlistButton from "../RemoveFromWatchlist";
+import RemoveFromWatchlistButton from "../buttons/RemoveFromWatchlistButton";
 
-export const ExploreCard = ({
+export const MediaCard = ({
   type,
   media,
   watchlist,

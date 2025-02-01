@@ -1,7 +1,7 @@
 "use client";
 
 import { IconX } from "@tabler/icons-react";
-import { handleRemoveFromWatchlist } from "../utils/watchlist";
+import { handleRemoveFromWatchlist } from "../../../utils/watchlist";
 
 interface RemoveFromWatchlistButtonProps {
   movieId: string;

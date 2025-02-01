@@ -4,7 +4,7 @@ import { navbar } from "../../lib/constants";
 import { IconBrandFlipboard } from "@tabler/icons-react";
 import { useScroll } from "../../hooks/useScroll";
 import { usePathname } from "next/navigation";
-import { SearchInput } from "../SearchInput";
+import { SearchInput } from "../UI/input/SearchInput";
 
 export default function Header() {
   const scroll = useScroll();

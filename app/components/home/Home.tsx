@@ -12,7 +12,7 @@ import { RecentMovies } from "./RecentMovies";
 import { Collections } from "./Collections";
 import { TrendingShows } from "./TrendingShows";
 import { Recommendations } from "./Recommendations";
-import { HomeSwiperSkeleton } from "./HomeSwiperSkeleton";
+import { HomeSwiperSkeleton } from "../UI/skeletons/HomeSwiperSkeleton";
 
 export const Home = ({
   results,
