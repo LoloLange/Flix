@@ -7,6 +7,7 @@ import {
 import WatchlistButton from "../UI/buttons/WatchlistButton";
 import { MovieDetails, Watchlist } from "@/app/types/types";
 import { Dispatch, SetStateAction } from "react";
+import { Link } from "next-view-transitions";
 
 export const MediaSummary = ({
   movie,
@@ -29,20 +30,21 @@ export const MediaSummary = ({
       <div className="flex flex-col gap-x-2 mt-2">
         <div className="flex text-gray-400 mb-1">
           {movie.genres.slice(0, 3).map((g, i) => (
-            <p
-              className={`${
-                i === 0 && movie.genres.length !== 1
-                  ? "border-r-2 border-gray-800 pr-3"
-                  : i !== movie.genres.slice(0, 3).length - 1
-                  ? "border-r-2 border-gray-800 px-3"
-                  : movie.genres.slice(0, 3).length !== 1
-                  ? "pl-3"
-                  : ""
-              }`}
-              key={g.id}
-            >
-              {g.name}
-            </p>
+            <Link key={g.id} href={`/explore/${movie.release_date ? "movies" : "shows"}?genre=` + g.id}>
+              <p
+                className={`${
+                  i === 0 && movie.genres.length !== 1
+                    ? "border-r-2 border-gray-800 pr-3"
+                    : i !== movie.genres.slice(0, 3).length - 1
+                    ? "border-r-2 border-gray-800 px-3"
+                    : movie.genres.slice(0, 3).length !== 1
+                    ? "pl-3"
+                    : ""
+                } cursor-pointer hover:text-gray-300 duration-300`}
+              >
+                {g.name}
+              </p>
+            </Link>
           ))}
         </div>
         <div className="mt-2 flex gap-4">

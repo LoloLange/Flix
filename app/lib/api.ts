@@ -77,3 +77,9 @@ export const search = (query: string) => {
   const queryParam = `&query=${query}`;
   return fetchData(path, queryParam);
 };
+
+export const searchByGenre = (type: string, genre: number) => {
+  const path = `/discover/${type}`;
+  const query = `&with_genres=${genre}`;
+  return fetchData(path, query);
+}
