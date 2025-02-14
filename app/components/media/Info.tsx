@@ -7,10 +7,10 @@ export const Info = ({ movie }: { movie: MovieDetails }) => {
 
   const Section = ({ title, items }: { title: string; items: string[] }) => (
     <div className="flex flex-col gap-y-3">
-      <p className="text-2xl text-gray-400">{title}</p>
+      <p className="text-2xl min-[2000px]:text-3xl text-gray-400">{title}</p>
       <div className="flex flex-col gap-y-1">
         {items.map((item, index) => (
-          <p key={index} className="text-lg">
+          <p key={index} className="text-lg min-[2000px]:text-2xl">
             {item}
           </p>
         ))}

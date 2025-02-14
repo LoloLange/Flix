@@ -24,17 +24,17 @@ export default function WatchlistButton({ media }: { media: Watchlist }) {
   return added ? (
     <button
       onClick={() => handleRemoveFromWatchlist({ movieId: media.id })}
-      className="flex gap-x-2 border-2 border-gray-700 w-fit py-1.5 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300"
+      className="flex gap-x-2 border-2 border-gray-700 w-fit py-1.5 min-[2000px]:py-2 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300"
     >
-      <IconX />
+      <IconX className="w-6 h-6 min-[2000px]:w-7 min-[2000px]:h-7" />
       Remove from Watchlist
     </button>
   ) : (
     <button
       onClick={() => handleAddToWatchlist({ media, setAdded })}
-      className="flex gap-x-2 border-2 border-gray-700 w-fit py-1.5 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300"
+      className="flex gap-x-2 border-2 border-gray-700 w-fit py-1.5 min-[2000px]:py-2 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300"
     >
-      <IconPlus />
+      <IconPlus className="w-6 h-6 min-[2000px]:w-7 min-[2000px]:h-7" />
       Add to Watchlist
     </button>
   );

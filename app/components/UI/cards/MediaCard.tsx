@@ -16,7 +16,7 @@ export const MediaCard = ({
     <div key={media.id} className="relative cursor-pointer">
       <Link href={type === "shows" ? `/tv/${media.id}` : `/movie/${media.id}`}>
         <div
-          className="h-[220px] bg-neutral-700 rounded-2xl relative"
+          className="h-[220px] min-[2000px]:h-[250px] min-[2200px]:h-[300px] bg-neutral-700 rounded-2xl relative"
           style={{
             backgroundImage: `url(${getPoster(media.backdrop_path)})`,
             backgroundSize: "cover",

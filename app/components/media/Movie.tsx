@@ -33,7 +33,7 @@ export const Movie = ({
     <main>
       {trailer && <Trailer video={video} setTrailer={setTrailer} />}
       <PosterWrapper poster={backImage} extraClassName="saturate-[1.3]" />
-      <div className="absolute bottom-5 px-20 flex justify-between items-center w-full select-none z-30 gap-x-10">
+      <div className="absolute bottom-5 min-[2000px]:bottom-10 px-20 flex justify-between items-center w-full select-none z-30 gap-x-10">
         <MediaSummary
           movie={movie}
           getMonth={getMonth}
@@ -45,7 +45,7 @@ export const Movie = ({
         <MediaOverview movie={movie} />
 
         <img
-          className="w-[200px] shadow-lg rounded-lg"
+          className="w-[200px] min-[2000px]:w-[250px] shadow-lg rounded-lg min-[2000px]:rounded-xl"
           src={poster}
           alt={movie.title}
         />

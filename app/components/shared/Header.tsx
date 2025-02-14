@@ -17,8 +17,8 @@ export default function Header() {
           : "bg-transparent backdrop-blur-none transition-all duration-700 border-b-0 border-b-transparent"
       }`}
     >
-      <IconBrandFlipboard className="w-9 h-9" />
-      <nav className="flex gap-x-10 pl-[200px] font-semibold">
+      <IconBrandFlipboard className="w-9 h-9 min-[2000px]:w-12 min-[2000px]:h-12 " />
+      <nav className="flex gap-x-10 min-[2000px]:gap-x-14 pl-[200px] min-[2000px]:pl-[300px] font-semibold min-[2000px]:text-xl">
         {navbar.map((link) => (
           <Link
             key={link.name}

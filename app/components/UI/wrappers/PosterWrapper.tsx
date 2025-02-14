@@ -6,7 +6,7 @@ export const PosterWrapper = ({ children, poster, extraClassName }: { children?:
       className={`w-full relative -z-10 ${extraClassName}`}
       style={{
         width: "100%",
-        height: "80vh",
+        height: innerHeight >= 2000 ? "80vh" : "75vh",
         backgroundImage: `url(${poster})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
