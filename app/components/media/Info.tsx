@@ -10,7 +10,7 @@ export const Info = ({ movie }: { movie: MovieDetails }) => {
       <p className="text-2xl min-[2000px]:text-3xl text-gray-400">{title}</p>
       <div className="flex flex-col gap-y-1">
         {items.map((item, index) => (
-          <p key={index} className="text-lg min-[2000px]:text-2xl">
+          <p key={index} className="text-xl min-[650px]:text-lg min-[2000px]:text-2xl">
             {item}
           </p>
         ))}
@@ -26,7 +26,7 @@ export const Info = ({ movie }: { movie: MovieDetails }) => {
   };
 
   return (
-    <section className="flex justify-between flex-wrap gap-5 my-10">
+    <section className="flex justify-between max-[650px]:flex-col flex-wrap gap-10 min-[650px]:gap-5 my-10">
       <Section
         title="Production companies"
         items={movie.production_companies.map((c) => c.name)}

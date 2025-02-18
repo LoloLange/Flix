@@ -16,7 +16,7 @@ export const SearchInput = () => {
         name="search"
         type="text"
         placeholder="Search"
-        className="border border-gray-600 bg-neutral-700 bg-opacity-60 backdrop-blur-sm rounded-lg px-3 min-[2000px]:px-11 py-1 min-[2000px]:py-2 pl-9 outline-none min-[2000px]:text-xl"
+        className="border border-gray-600 bg-neutral-700 bg-opacity-60 backdrop-blur-sm rounded-lg px-3 min-[2000px]:px-11 py-1 min-[2000px]:py-2 pl-9 outline-none min-[2000px]:text-xl max-[420px]:w-[220px] max-[360px]:w-[200px]"
       />
     </form>
   );

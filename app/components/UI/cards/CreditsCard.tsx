@@ -11,7 +11,7 @@ export const CreditsCard = ({
   return (
     <div className="h-full">
       <div
-        className="h-[300px] min-[2000px]:h-[350px] min-[2200px]:h-[450px] bg-neutral-700 rounded-2xl relative"
+        className="h-[250px] min-[550px]:h-[300px] min-[2000px]:h-[350px] min-[2200px]:h-[450px] bg-neutral-700 rounded-2xl relative"
         style={{
           backgroundImage: `url(${getPoster(c.profile_path || "")})`,
           backgroundSize: "cover",

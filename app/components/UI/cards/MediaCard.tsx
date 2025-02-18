@@ -27,7 +27,7 @@ export const MediaCard = ({
       </Link>
       {watchlist && <RemoveFromWatchlistButton movieId={media.id.toString()} />}
       <div className="absolute bottom-5 px-5">
-        <p className="text-lg">{media.title ? media.title : media.name}</p>
+        <p className="min-[600px]:text-lg">{media.title ? media.title : media.name}</p>
         <p className="text-sm opacity-75">
           {media.release_date ? media.release_date : media.first_air_date}
         </p>

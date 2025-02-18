@@ -20,8 +20,8 @@ export const SearchContainer = () => {
     }
   }, [query]);
   return (
-    <section className="px-20 mt-28">
-      <div className="grid grid-cols-4 gap-5">
+    <section className="px-10 min-[1100px]:px-20 mt-28">
+      <div className="grid min-[520px]:grid-cols-2 min-[900px]:grid-cols-3 min-[1300px]:grid-cols-4 gap-4 min-[650px]:gap-5">
         {results.map(
           (r) =>
             r.backdrop_path && <MediaCard key={r.id} type={""} media={r} />

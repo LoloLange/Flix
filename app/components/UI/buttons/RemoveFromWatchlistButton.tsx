@@ -13,7 +13,7 @@ export default function RemoveFromWatchlistButton({
   return (
     <IconX
       onClick={() => handleRemoveFromWatchlist({ movieId })}
-      className="absolute top-3 right-4 text-white w-7 h-7 z-50 hover:text-red-600 duration-300"
+      className="absolute top-3 right-4 text-white w-7 h-7 z-30 hover:text-red-600 duration-300"
     />
   );
 }

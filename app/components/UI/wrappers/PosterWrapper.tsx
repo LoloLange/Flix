@@ -1,17 +1,21 @@
+import useWindowSize from "@/app/hooks/useWindowSize";
+import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
 export const PosterWrapper = ({ children, poster, extraClassName }: { children?: ReactNode, poster: string, extraClassName?: string }) => {
+  const windowSize = useWindowSize();
+  const pathname = usePathname();
   return (
     <div
-      className={`w-full relative -z-10 ${extraClassName}`}
+      className={`w-full absolute ${pathname !== '/' ? "min-[800px]:relative" : "relative"} -z-10 ${extraClassName}`}
       style={{
         width: "100%",
-        height: innerHeight >= 2000 ? "80vh" : "75vh",
+        height: windowSize.width && windowSize.width >= 2000 ? "80vh" : windowSize.width && windowSize.width >= 500 ? "75vh" : "70vh",
         backgroundImage: `url(${poster})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         boxSizing: "border-box",
-        boxShadow: "inset 200px 50px 500px 200px rgba(0, 0, 0, 0.6)",
+        boxShadow: windowSize.width && windowSize.width >= 800 ? "inset 200px 50px 500px 200px rgba(0, 0, 0, 0.6)" : "inset 500px 500px 500px 500px rgba(0, 0, 0, 0.65)",
         maskImage: "linear-gradient(black 85%, transparent)",
       }}
     >{children}</div>

@@ -30,10 +30,10 @@ export const Movie = ({
 
   const [trailer, setTrailer] = useState<boolean>(false);
   return (
-    <main>
+    <main className="relative">
       {trailer && <Trailer video={video} setTrailer={setTrailer} />}
       <PosterWrapper poster={backImage} extraClassName="saturate-[1.3]" />
-      <div className="absolute bottom-5 min-[2000px]:bottom-10 px-20 flex justify-between items-center w-full select-none z-30 gap-x-10">
+      <div className="max-[800px]:mt-32 min-[800px]:absolute bottom-0 min-[2000px]:bottom-10 px-16 min-[500px]:px-20 flex min-[800px]:justify-between items-center w-full select-none z-30 gap-x-10 gap-y-10 max-[1000px]:flex-wrap">
         <MediaSummary
           movie={movie}
           getMonth={getMonth}
@@ -41,7 +41,6 @@ export const Movie = ({
           trailer={trailer}
           watchlist={watchlist}
         />
-
         <MediaOverview movie={movie} />
 
         <img

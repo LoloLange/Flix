@@ -5,7 +5,7 @@ import { SwiperSectionWrapper } from "../UI/wrappers/SwiperSectionWrapper";
 export const Collections = ({ collections }: { collections: Collection[] }) => {
   return (
     <SwiperSectionWrapper>
-      <p className="text-4xl px-10 text-gray-400 mb-5">Popular Collections</p>
+      <p className="text-3xl min-[600px]:text-4xl px-5 min-[600px]:px-10 text-gray-400 mb-5">Popular Collections</p>
       <SwiperContainer
         results={collections[0].parts}
         collectionName={collections[0].name}

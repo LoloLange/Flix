@@ -29,7 +29,7 @@ export const Home = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [ready, setReady] = useState(false);
-  const backImage = getPoster(results[currentIndex].backdrop_path);
+  const backImage = getPoster(results[currentIndex]?.backdrop_path);
   const upcomingBackImage = getPoster(recent[0].backdrop_path);
   return (
     <>

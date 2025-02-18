@@ -7,6 +7,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Link } from "next-view-transitions";
+import useWindowSize from "@/app/hooks/useWindowSize";
 
 export const SwiperContainer = ({
   results,
@@ -27,41 +28,44 @@ export const SwiperContainer = ({
 }) => {
   const [isClient, setIsClient] = useState(false);
   const uniqueId = `swiper-${Math.random().toString(36).substr(2, 9)}`;
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  if (!isClient) return null; // Evita la renderización en el servidor
+  console.log(uniqueId)
+
+  if (!isClient) return null;
   return (
     <section className={`${setCurrentIndex && "-mt-20 z-30"}`}>
       {setCurrentIndex ? (
-        <p className="text-xl min-[2000px]:text-2xl min-[2000px]:mb-3 text-gray-300 px-20">Trending movies</p>
+        <p className="text-xl min-[2000px]:text-2xl min-[2000px]:mb-3 text-gray-300 px-14 min-[800px]:px-20">Trending movies</p>
       ) : tvShows ? (
-        <p className={`text-lg min-[2000px]:text-2xl text-gray-300 px-10`}>Trending Tv Shows</p>
+        <p className={`text-lg min-[2000px]:text-2xl text-gray-300 px-5 min-[600px]:px-10`}>Trending Tv Shows</p>
       ) : recommendations ? (
-        <p className={`text-lg min-[2000px]:text-2xl text-gray-300 px-10`}>Recommendations</p>
+        <p className={`text-lg min-[2000px]:text-2xl text-gray-300 px-5 min-[600px]:px-10`}>Recommendations</p>
       ) : !collectionName ? (
         <p
           className={`text-lg min-[2000px]:text-2xl text-gray-300 ${
-            setCurrentIndex ? "px-20" : "px-10 mt-3"
+            setCurrentIndex ? "px-20" : "px-5 min-[600px]:px-10 mt-3"
           }`}
         >
           Recent movies
         </p>
       ) : (
-        <p className={`text-lg min-[2000px]:text-2xl text-gray-300 px-10`}>{collectionName}</p>
+        <p className={`text-lg min-[2000px]:text-2xl text-gray-300 px-5 min-[600px]:px-10`}>{collectionName}</p>
       )}
       <div
         className={`overflow-hidden mt-2 mb-5 relative group ${
-          setCurrentIndex ? "px-20" : "px-10 mt-3"
+          setCurrentIndex ? "px-14 min-[800px]:px-20" : "px-5 min-[600px]:px-10 mt-3"
         } `}
       >
         <Swiper
           onSlideChange={(swiper) =>
             setCurrentIndex && setCurrentIndex(swiper.realIndex)
           }
-          slidesPerView={setCurrentIndex ? 7 : 4}
+          slidesPerView={setCurrentIndex ? windowSize.width && windowSize.width <= 1340 ? windowSize.width && windowSize.width <= 1150 ? windowSize.width && windowSize.width <= 900 ? windowSize.width && windowSize.width <= 700 ? windowSize.width && windowSize.width <= 520 ? 2 : 3 : 4 : 5 : 6 : 7 : windowSize.width && windowSize.width <= 1200 ? windowSize.width <= 900 ? windowSize.width <= 450 ? 1 : 2 : 3 : 4}
           spaceBetween={10}
           loop={ready && true}
           navigation={{
@@ -88,9 +92,9 @@ export const SwiperContainer = ({
                 />
               </Link>
               {!setCurrentIndex && (
-                <div className="absolute bottom-5 px-5">
-                  <p className="text-lg min-[2000px]:text-2xl">{m.title ? m.title : m.name}</p>
-                  <p className="text-sm min-[2000px]:text-base opacity-75">
+                <div className="absolute bottom-3 min-[600px]:bottom-5 px-5">
+                  <p className="text-sm min-[600px]:text-base min-[750px]:text-lg min-[2000px]:text-2xl">{m.title ? m.title : m.name}</p>
+                  <p className="text-[10px] min-[600px]:text-xs min-[750px]:text-sm min-[2000px]:text-base opacity-75">
                     {typeof m.release_date === "string"
                       ? m.release_date
                       : m.first_air_date}
@@ -102,7 +106,7 @@ export const SwiperContainer = ({
         </Swiper>
         <div
           className={`absolute right-0 -top-1 h-full flex items-center z-20 ${
-            setCurrentIndex ? "px-10 min-[2000px]:px-5" : "px-0 opacity-0 group-hover:opacity-100 duration-300"
+            setCurrentIndex ? "px-3 min-[800px]:px-10 min-[2000px]:px-5" : "px-0 opacity-0 group-hover:opacity-100 duration-300"
           } cursor-pointer swiper-next-${uniqueId}`}
         >
           <IconChevronRight className="w-8 h-8 min-[2000px]:w-10 min-[2000px]:h-10" />
@@ -110,7 +114,7 @@ export const SwiperContainer = ({
 
         <div
           className={`absolute left-0 -top-1 h-full flex items-center z-20 ${
-            setCurrentIndex ? "px-10 min-[2000px]:px-5" : "px-0 opacity-0 group-hover:opacity-100 duration-300"
+            setCurrentIndex ? "px-3 min-[800px]:px-10 min-[2000px]:px-5" : "px-0 opacity-0 group-hover:opacity-100 duration-300"
           } cursor-pointer swiper-prev-${uniqueId}`}
         >
           <IconChevronLeft className="w-8 h-8 min-[2000px]:w-10 min-[2000px]:h-10" />

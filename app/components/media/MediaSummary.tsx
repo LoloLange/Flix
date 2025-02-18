@@ -23,11 +23,11 @@ export const MediaSummary = ({
   watchlist: Watchlist;
 }) => {
   return (
-    <div>
-      <p className="text-5xl min-[2000px]:text-[50px] font-medium">
+    <div className="max-[1000px]:order-2">
+      <p className="text-3xl min-[1000px]:text-4xl min-[1700px]:text-5xl min-[2000px]:text-[50px] font-medium">
         {movie.title ? movie.title : movie.name}
       </p>
-      <div className="flex flex-col gap-x-2 mt-2 min-[2000px]:text-xl">
+      <div className="flex flex-col gap-x-2 mt-2 max-md:text-sm min-[2000px]:text-xl">
         <div className="flex text-gray-400 mb-1">
           {movie.genres.slice(0, 3).map((g, i) => (
             <Link key={g.id} href={`/explore/${movie.release_date ? "movies" : "shows"}?genre=` + g.id}>
@@ -47,7 +47,7 @@ export const MediaSummary = ({
             </Link>
           ))}
         </div>
-        <div className="mt-2 flex gap-4">
+        <div className="mt-2 flex gap-4 flex-wrap">
           <div className="flex gap-x-1 min-[2000px]:gap-x-2 items-center">
             <IconStarFilled className="w-6 h-6 min-[2000px]:w-7 min-[2000px]:h-7 text-gray-400" />
             <p className="">{movie.vote_average.toFixed(1)}/10</p>
@@ -70,10 +70,10 @@ export const MediaSummary = ({
             </p>
           </div>
         </div>
-        <div className="flex gap-x-2 items-center">
+        <div className="flex gap-x-2 items-center flex-wrap">
           <div
             onClick={() => setTrailer(!trailer)}
-            className="flex gap-x-2 border-2 border-gray-700 w-fit py-1.5 min-[2000px]:py-2 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300"
+            className="flex gap-x-2 border-2 border-gray-700 w-fit py-1.5 min-[2000px]:py-2 px-3 mt-4 rounded-lg cursor-pointer shadow-lg hover:scale-105 duration-300 items-center"
           >
             <IconPlayerPlayFilled className="w-6 h-6 min-[2000px]:w-7 min-[2000px]:h-7 p-0.5" />
             <p>See trailer</p>

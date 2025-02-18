@@ -41,9 +41,9 @@ export default async function TvPage({ params }: TvPageProps) {
   };
 
   return (
-    <main className="flex flex-col gap-y-[200px]">
+    <main className="flex flex-col max-[800px]:gap-y-[50px]">
       <Movie movie={movie} video={trailer} watchlist={watchlist} />
-      <section className="flex flex-col gap-y-10 px-36">
+      <section className="flex flex-col gap-y-10 px-12 min-[600px]:px-36">
         {credits.cast.length > 0 && <Credits credits={credits} cast={true} />}
         {credits.crew.length > 0 && <Credits credits={credits} cast={false} />}
         <Info movie={movie} />

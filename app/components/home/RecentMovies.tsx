@@ -14,10 +14,10 @@ export const RecentMovies = ({
 }) => {
   const current = recent[0];
   return (
-    <section className="py-20">
+    <section className="py-5 min-[700px]:py-10 min-[1000px]:py-20">
       <PosterWrapper poster={poster} extraClassName="px-5 z-10">
         <RecentMoviesInfo current={current} tvShows={tvShows} />
-        <div className="absolute bottom-14 w-[calc(100%-50px)]">
+        <div className="min-[450px]:absolute bottom-14 w-[calc(100%-50px)] min-[600px]:mx-auto">
           <SwiperContainer results={recent} tvShows={tvShows ? true : false} />
         </div>
       </PosterWrapper>
