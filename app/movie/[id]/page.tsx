@@ -9,13 +9,13 @@ import {
   movieRecommendations,
 } from "@/app/lib/api";
 import { MovieCredits, MovieDetails, Video } from "@/app/types/types";
+import { InferGetServerSidePropsType } from "next";
+import { getServerSideProps } from "next/dist/build/templates/pages";
 import { notFound } from "next/navigation";
 
-interface MoviePageProps {
-  params: { id: string };
-}
-
-export default async function MoviePage({ params }: MoviePageProps) {
+export default async function MoviePage({
+  params,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const { id } = params;
 
   if (!id) {

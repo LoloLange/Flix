@@ -9,13 +9,13 @@ import {
   showRecommendations,
 } from "@/app/lib/api";
 import { Video } from "@/app/types/types";
+import { InferGetServerSidePropsType } from "next";
+import { getServerSideProps } from "next/dist/build/templates/pages";
 import { notFound } from "next/navigation";
 
-interface TvPageProps {
-  params: { id: string };
-}
-
-export default async function TvPage({ params }: TvPageProps) {
+export default async function TvPage({
+  params,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const { id } = params;
 
   if (!id) {
