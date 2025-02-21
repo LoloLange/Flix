@@ -13,7 +13,7 @@ export const CreditsCard = ({
       <div
         className="h-[250px] min-[550px]:h-[300px] min-[2000px]:h-[350px] min-[2200px]:h-[450px] bg-neutral-700 rounded-2xl relative"
         style={{
-          backgroundImage: `url(${getPoster(c.profile_path || "")})`,
+          backgroundImage: `url(${getPoster(c.profile_path || "", false, true)})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           boxShadow: "inset 0px -70px 50px 0px rgba(0, 0, 0, 0.8)",

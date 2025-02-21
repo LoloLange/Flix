@@ -18,7 +18,7 @@ export const Movie = ({
   video: Video;
   watchlist: Watchlist;
 }) => {
-  const backImage = getPoster(movie.backdrop_path);
+  const backImage = getPoster(movie.backdrop_path, true);
   const poster = getPoster(movie.poster_path);
 
   const getMonth = (date: string) => {
