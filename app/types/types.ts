@@ -1,3 +1,7 @@
+/* ------- MEDIA ------- */
+
+import { Dispatch } from "react";
+
 export interface TrendingMovies {
   backdrop_path: string;
   id: number;
@@ -181,6 +185,8 @@ export interface Video {
   id: string;
 }
 
+/* ------- WATCHLIST ------- */
+
 export interface Watchlist {
   type: "movies" | "shows" | string;
   id: string;
@@ -189,4 +195,32 @@ export interface Watchlist {
   release_date?: string;
   name?: string;
   first_air_date?: string;
+}
+
+/* ------- COMPONENTS ------- */
+
+export interface ExploreComponent {
+  searchType: "movies" | "shows";
+  page: number;
+  setPage: Dispatch<React.SetStateAction<number>>;
+  results: MovieDetails[];
+  setResults: Dispatch<React.SetStateAction<MovieDetails[]>>;
+}
+
+export interface HomeComponent {
+  results: TrendingMovies[];
+  recent: RecentMovies[];
+  collections: Collection[];
+  tvShows: TrendingMovies[];
+  recommendations: TrendingMovies[];
+}
+
+export interface SwiperContainerComponent {
+  results: TrendingMovies[] | RecentMovies[] | Collection["parts"];
+  setCurrentIndex?: Dispatch<React.SetStateAction<number>>;
+  collectionName?: string;
+  tvShows?: boolean;
+  recommendations?: boolean;
+  setReady?: Dispatch<React.SetStateAction<boolean>>;
+  ready?: boolean;
 }

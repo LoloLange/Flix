@@ -1,9 +1,5 @@
 "use client";
-import {
-  TrendingMovies,
-  RecentMovies as RecentMoviesType,
-  Collection,
-} from "@/app/types/types";
+import { HomeComponent } from "@/app/types/types";
 import { Hero } from "./Hero";
 import { SwiperContainer } from "./SwiperContainer";
 import { getPoster } from "@/app/utils/getPoster";
@@ -20,13 +16,7 @@ export const Home = ({
   collections,
   tvShows,
   recommendations,
-}: {
-  results: TrendingMovies[];
-  recent: RecentMoviesType[];
-  collections: Collection[];
-  tvShows: TrendingMovies[];
-  recommendations: TrendingMovies[];
-}) => {
+}: HomeComponent) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [ready, setReady] = useState(false);
   const backImage = getPoster(results[currentIndex]?.backdrop_path, true);
